@@ -6,12 +6,18 @@ import mongoose from "mongoose";
 import AuthRoute from './Routes/AuthRoutes.js'
 import UserRoutes from './Routes/UserRoutes.js'
 import PostRoutes from './Routes/PostRoutes.js'
+import UploadRoutes from './Routes/UploadRoutes.js'
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// for accessing images for public
+app.use(express.static('public'))
+app.use('/images', express.static("images"))
+
 // Middleware
+app.use(cors());
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
@@ -36,3 +42,4 @@ mongoose.connect(
 app.use('/auth', AuthRoute);
 app.use('/user', UserRoutes);
 app.use('/post', PostRoutes)
+app.use('/upload', UploadRoutes)
