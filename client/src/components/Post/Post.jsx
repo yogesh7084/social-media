@@ -21,7 +21,13 @@ const Post = ({ data }) => {
 
     return (
         <div className="Post">
-            <img src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ""} alt="post-img" />
+            <div className="details">
+                {/* <span><b>{data.firstname}</b></span> */}
+                <span> {data.desc}</span>
+            </div>
+            {data.image &&
+                <img src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ""} alt="post-img" />
+            }
 
             <div className="postReact">
                 <img
@@ -36,10 +42,7 @@ const Post = ({ data }) => {
 
             <span style={{ color: "var(--gray)", fontSize: "12px" }}>{likes} likes</span>
 
-            <div className="details">
-                <span><b>{data.name}</b></span>
-                <span> {data.desc}</span>
-            </div>
+
         </div>
     )
 }
