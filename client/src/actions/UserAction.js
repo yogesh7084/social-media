@@ -13,10 +13,10 @@ export const updateUser = (id, formData) => async (dispatch) => {
 }
 
 export const followUser = (id, data) => async (dispatch) => {
-    dispatch({ type: "FOLLOW_USER", data: id })
     UserApi.followUser(id, data);
+    dispatch({ type: "FOLLOW_USER", data: id })
 }
 export const unFollowUser = (id, data) => async (dispatch) => {
-    dispatch({ type: "UNFOLLOW_USER", data: id })
     UserApi.unFollowUser(id, data);
+    dispatch({ type: "UNFOLLOW_USER", data: id })
 }
