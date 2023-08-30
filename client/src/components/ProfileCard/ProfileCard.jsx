@@ -1,6 +1,4 @@
 import React from 'react'
-import Cover from '../../img/cover.jpg'
-import Profile from '../../img/profileImg.jpg'
 import './ProfileCard.css'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
@@ -10,7 +8,6 @@ const ProfileCard = ({ location }) => {
     const posts = useSelector((state) => state.postReducer.posts)
     const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
-    const ProfilePage = false;
     return (
         <div className='ProfileCard'>
             <div className="ProfileImages">

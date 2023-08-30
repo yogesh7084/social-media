@@ -75,8 +75,8 @@ const Chat = () => {
 
           <h2>Chats</h2>
           <div className="Chat-list">
-            {chats.map((chat) =>
-              <div onClick={() => setCurrentChat(chat)}>
+            {chats.map((chat, key) =>
+              <div onClick={() => setCurrentChat(chat)} key={key}>
                 <Conversation data={chat} currentUserId={user._id} online={checkOnlineStatus(chat)} />
               </div>
             )}
