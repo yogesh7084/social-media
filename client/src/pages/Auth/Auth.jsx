@@ -4,6 +4,9 @@ import Logo from "../../img/logo.png";
 import { useDispatch, useSelector } from 'react-redux';
 import { login, signUp } from "../../actions/AuthAction";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Auth = () => {
     const dispatch = useDispatch();
     const loading = useSelector((state) => state.authReducer.loading);
@@ -22,13 +25,21 @@ const Auth = () => {
         setData({ ...data, [e.target.name]: e.target.value });
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (isSignup) {
-            data.password === data.confirmpass ? dispatch(signUp(data)) : setConfirmpass(false);
+            data.password === data.confirmpass
+                ?
+                toast.warn(await dispatch(signUp(data)), {
+                    position: "top-center"
+                })
+                :
+                setConfirmpass(false);
         } else {
-            dispatch(login(data));
+            toast.warn(await dispatch(login(data)), {
+                position: "top-center"
+            });
         }
     }
 
@@ -49,8 +60,8 @@ const Auth = () => {
             <div className="a-left">
                 <img src={Logo} alt="" />
                 <div className="Webname">
-                    <h1>ZKC Media</h1>
-                    <h6>Explore the ideas throughout the world</h6>
+                    <h1>Socio Media</h1>
+                    <h6>Connect with the people over the globe.</h6>
                 </div>
             </div>
 
@@ -133,7 +144,7 @@ const Auth = () => {
                 </form>
             </div>
 
-
+            <ToastContainer />
         </div>
     );
 };

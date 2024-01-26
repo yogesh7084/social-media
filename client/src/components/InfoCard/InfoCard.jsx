@@ -31,6 +31,7 @@ const InfoCard = () => {
         }
 
         fetchProfileUser();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user])
 
     const handleLogout = () => {

@@ -28,6 +28,7 @@ const FollowersCard = () => {
                         <User person={person} key={id} />
                     )
                 }
+                else return null;
             })}
         </div>
     )
