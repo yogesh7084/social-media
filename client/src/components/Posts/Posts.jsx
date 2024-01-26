@@ -14,6 +14,7 @@ const Posts = () => {
 
     useEffect(() => {
         dispatch(getTimelinePosts(user._id));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (!posts)
@@ -25,7 +26,7 @@ const Posts = () => {
         <div className="Posts">
             {loading ? "Fetching posts..." :
                 posts.map((post, id) => {
-                    return <Post data={post} id={id} key={id}/>
+                    return <Post data={post} id={id} key={id} />
                 })}
         </div>
     )
